@@ -39,6 +39,9 @@ from .filter_range import FilterRange
 from .wqb_urls import (
     URL_ALPHAS_ALPHAID,
     URL_ALPHAS_ALPHAID_CHECK,
+    URL_ALPHAS_ALPHAID_CHECK_PROD,
+    URL_ALPHAS_ALPHAID_CHECK_POWER_POOL,    
+    URL_ALPHAS_ALPHAID_CHECK_SELF,
     URL_ALPHAS_ALPHAID_SUBMIT,
     URL_AUTHENTICATION,
     URL_DATAFIELDS,
@@ -1284,6 +1287,81 @@ class WQBSession(AutoAuthSession):
                 '\n'.join(
                     (
                         f"{self}.check(...) [",
+                        f"    {url}",
+                        f"]: {log}",
+                    )
+                )
+            )
+        return resp
+
+    async def check_prod(
+        self,
+        alpha_id: str,
+        *args,
+        max_tries: int | Iterable[Any] = range(600),
+        log: str | None = '',
+        retry_log: str | None = None,
+        **kwargs,
+    ) -> Coroutine[None, None, Response | None]:
+        url = URL_ALPHAS_ALPHAID_CHECK_PROD.format(alpha_id)
+        resp = await self.retry(
+            GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
+        )
+        if log is not None:
+            self.logger.info(
+                '\n'.join(
+                    (
+                        f"{self}.check_prod(...) [",
+                        f"    {url}",
+                        f"]: {log}",
+                    )
+                )
+            )
+        return resp
+    
+    async def check_power_pool(
+        self,
+        alpha_id: str,
+        *args,
+        max_tries: int | Iterable[Any] = range(600),
+        log: str | None = '',
+        retry_log: str | None = None,
+        **kwargs,
+    ) -> Coroutine[None, None, Response | None]:
+        url = URL_ALPHAS_ALPHAID_CHECK_POWER_POOL.format(alpha_id)
+        resp = await self.retry(
+            GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
+        )
+        if log is not None:
+            self.logger.info(
+                '\n'.join(
+                    (
+                        f"{self}.check_power_pool(...) [",
+                        f"    {url}",
+                        f"]: {log}",
+                    )
+                )
+            )
+        return resp
+    
+    async def check_self(
+        self,
+        alpha_id: str,
+        *args,
+        max_tries: int | Iterable[Any] = range(600),
+        log: str | None = '',
+        retry_log: str | None = None,
+        **kwargs,
+    ) -> Coroutine[None, None, Response | None]:
+        url = URL_ALPHAS_ALPHAID_CHECK_SELF.format(alpha_id)
+        resp = await self.retry(
+            GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
+        )
+        if log is not None:
+            self.logger.info(
+                '\n'.join(
+                    (
+                        f"{self}.check_self(...) [",
                         f"    {url}",
                         f"]: {log}",
                     )
