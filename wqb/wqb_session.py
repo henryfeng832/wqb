@@ -832,16 +832,16 @@ class WQBSession(AutoAuthSession):
     ) -> Response:
         url = URL_ALPHAS_ALPHAID.format(alpha_id)
         resp = self.get(url, *args, **kwargs)
-        if log is not None:
-            self.logger.info(
-                '\n'.join(
-                    (
-                        f"{self}.locate_alpha(...) [",
-                        f"    {url}",
-                        f"]: {log}",
-                    )
-                )
-            )
+        # if log is not None:
+        #     self.logger.info(
+        #         '\n'.join(
+        #             (
+        #                 f"{self}.locate_alpha(...) [",
+        #                 f"    {url}",
+        #                 f"]: {log}",
+        #             )
+        #         )
+        #     )
         return resp
 
     def filter_alphas_limited(
@@ -1212,17 +1212,17 @@ class WQBSession(AutoAuthSession):
         resp = await self.retry(
             GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
         )
-        if log is not None:
-            self.logger.info(
-                '\n'.join(
-                    (
-                        f"{self}.simulate(...) [",
-                        f"    {url}",
-                        # f"    {target}",
-                        f"]: {log}",
-                    )
-                )
-            )
+        # if log is not None:
+        #     self.logger.info(
+        #         '\n'.join(
+        #             (
+        #                 f"{self}.simulate(...) [",
+        #                 f"    {url}",
+        #                 # f"    {target}",
+        #                 f"]: {log}",
+        #             )
+        #         )
+        #     )
         return resp
 
     async def concurrent_simulate(
@@ -1282,16 +1282,16 @@ class WQBSession(AutoAuthSession):
         resp = await self.retry(
             GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
         )
-        if log is not None:
-            self.logger.info(
-                '\n'.join(
-                    (
-                        f"{self}.check(...) [",
-                        f"    {url}",
-                        f"]: {log}",
-                    )
-                )
-            )
+        # if log is not None:
+        #     self.logger.info(
+        #         '\n'.join(
+        #             (
+        #                 f"{self}.check(...) [",
+        #                 f"    {url}",
+        #                 f"]: {log}",
+        #             )
+        #         )
+        #     )
         return resp
 
     async def check_prod(
@@ -1307,16 +1307,16 @@ class WQBSession(AutoAuthSession):
         resp = await self.retry(
             GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
         )
-        if log is not None:
-            self.logger.info(
-                '\n'.join(
-                    (
-                        f"{self}.check_prod(...) [",
-                        f"    {url}",
-                        f"]: {log}",
-                    )
-                )
-            )
+        # if log is not None:
+        #     self.logger.info(
+        #         '\n'.join(
+        #             (
+        #                 f"{self}.check_prod(...) [",
+        #                 f"    {url}",
+        #                 f"]: {log}",
+        #             )
+        #         )
+        #     )
         return resp
     
     async def check_power_pool(
@@ -1332,16 +1332,16 @@ class WQBSession(AutoAuthSession):
         resp = await self.retry(
             GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
         )
-        if log is not None:
-            self.logger.info(
-                '\n'.join(
-                    (
-                        f"{self}.check_power_pool(...) [",
-                        f"    {url}",
-                        f"]: {log}",
-                    )
-                )
-            )
+        # if log is not None:
+        #     self.logger.info(
+        #         '\n'.join(
+        #             (
+        #                 f"{self}.check_power_pool(...) [",
+        #                 f"    {url}",
+        #                 f"]: {log}",
+        #             )
+        #         )
+        #     )
         return resp
     
     async def check_self(
@@ -1357,16 +1357,16 @@ class WQBSession(AutoAuthSession):
         resp = await self.retry(
             GET, url, *args, max_tries=max_tries, log=retry_log, **kwargs
         )
-        if log is not None:
-            self.logger.info(
-                '\n'.join(
-                    (
-                        f"{self}.check_self(...) [",
-                        f"    {url}",
-                        f"]: {log}",
-                    )
-                )
-            )
+        # if log is not None:
+        #     self.logger.info(
+        #         '\n'.join(
+        #             (
+        #                 f"{self}.check_self(...) [",
+        #                 f"    {url}",
+        #                 f"]: {log}",
+        #             )
+        #         )
+        #     )
         return resp
 
     async def concurrent_check(
